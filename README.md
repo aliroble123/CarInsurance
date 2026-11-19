@@ -1,35 +1,23 @@
-# Car Insurance — ASP.NET MVC 5 Assignment Part 3
+# Car Insurance — ASP.NET MVC Entity Framework Assignment Part 3
 
-This project implements the Car Insurance quote assignment using classic ASP.NET MVC 5, .NET Framework 4.8, Entity Framework 6, and SQL Server LocalDB.
+This is a **coursework starter project** for classic ASP.NET MVC 5 on .NET Framework 4.8, with Entity Framework 6 and SQL Server LocalDB.
 
-## Implemented assignment requirements
+## Open in Visual Studio (Windows)
 
-- Calculates quotes on the server in `Controllers/InsureeController.cs`.
-- Starts each quote at $50 per month.
-- Applies the age additions for 18 and under, 19–25, and 26 and older.
-- Applies the vehicle-year additions for years before 2000 and after 2015.
-- Adds the Porsche surcharge and the additional Porsche 911 Carrera surcharge.
-- Adds $10 for each speeding ticket.
-- Applies the DUI and full-coverage percentage increases.
-- Does not display or accept a Quote input on `Views/Insuree/Create.cshtml`. The server calculates and saves the quote.
-- Provides `Views/Insuree/Admin.cshtml`, listing each saved quote with first name, last name, email address, and monthly quote.
+1. Install the **ASP.NET and web development** workload, including **.NET Framework 4.8 targeting pack** and **Entity Framework 6 tools**.
+2. Open `CarInsurance.sln` in **Visual Studio Community** (not VS Code). This solution contains one ASP.NET MVC 5 web project; do not add the separate `WebApplication1` project.
+3. Right-click the solution > **Restore NuGet Packages**. If references remain missing, use **Tools > NuGet Package Manager > Package Manager Console**, and run `Update-Package -reinstall`.
+4. Ensure SQL Server Express LocalDB (`MSSQLLocalDB`) is installed.
+5. Build solution, then press **F5**. Browse to `/Insuree/Create` if needed.
+6. Submit a sample quote, then open `/Insuree/Admin` to see saved records.
 
-## Open and run in Visual Studio on Windows
+## Quote rules
 
-1. Open `CarInsurance.sln` in Visual Studio Community. This is a classic ASP.NET MVC 5 project; use Visual Studio with the **ASP.NET and web development** workload.
-2. Ensure the **.NET Framework 4.8 targeting pack** and SQL Server Express LocalDB are installed.
-3. Right-click the solution and select **Restore NuGet Packages**. If required, open Package Manager Console and run `Update-Package -reinstall`.
-4. Select **Build > Build Solution**.
-5. Press **F5** to run the application. Open `/Insuree/Create` if the quote form does not appear automatically.
-6. Submit a test quote. Then open `/Insuree/Admin` to see the saved record.
+$50 base; ages <=18 +$100, 19–25 +$50, 26+ +$25; car before 2000 +$25, after 2015 +$25; Porsche +$25 and 911 Carrera +$25 more; tickets +$10 each; DUI multiplies by 1.25; full coverage multiplies by 1.50. Quote is calculated server-side and never entered on the form.
 
-## Quote calculation order
+## Important
 
-The controller adds the fixed charges first, then multiplies the subtotal by 1.25 when the applicant has a DUI and by 1.50 for full coverage. If both apply, both multipliers apply sequentially. The final quote is rounded to two decimal places.
-
-## Important notes
-
-- This environment does not have the Windows .NET Framework/MSBuild toolchain, so the project could not be compiled or launched here. Restore NuGet packages, build, and run it in Visual Studio on Windows before submitting.
-- `/Insuree/Admin` is a coursework demonstration page and is not protected by administrator authentication. Do not deploy it publicly without adding authentication and administrator-only authorization, because it displays personal information.
-- The project uses Entity Framework 6 with SQL Server LocalDB. The database is created on first use; existing databases may require migrations if the model changes.
-- The GitHub upload is not performed by this ZIP preparation. Push the tested project to your own GitHub repository and submit that repository URL.
+- This ZIP contains **source code only**. It has **not been compiled or run** in this environment; you must restore packages and test it in Visual Studio.
+- The Admin page is **not access-controlled** and displays personal data. It is **for local coursework demonstration only**, not production deployment. Add login and role-based authorization before publishing it.
+- The example uses EF6's default database initializer. LocalDB should create the database on first use. For an existing database or schema change, use EF migrations.
+- No GitHub upload has been performed. Push the repository from Visual Studio after testing.

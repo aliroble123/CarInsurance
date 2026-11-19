@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@ViewBag.Title - Car Insurance</title>
+  <style>
+    body { font-family: Segoe UI,Arial,sans-serif; background:#f5f7fb; color:#1d2939; margin:0; }
+    header { background:#172b4d; padding:20px 7%; color:white; }
+    header a { color:white; margin-right:24px; text-decoration:none; }
+    main { max-width:900px; margin:36px auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 20px #14253a12; }
+    label { display:block; margin:14px 0 6px; font-weight:600; }
+    input:not([type=checkbox]) { width:100%; max-width:440px; padding:10px; border:1px solid #bfc7d2; border-radius:6px; box-sizing:border-box; }
+    .check label { font-weight:400; } button { margin-top:20px; padding:12px 22px; background:#175cd3; color:white; border:0; border-radius:6px; cursor:pointer; }
+    table { width:100%; border-collapse:collapse; } th,td { border-bottom:1px solid #e3e8ef; padding:12px; text-align:left; }
+    .field-validation-error,.validation-summary-errors { color:#b42318; }
+  </style>
+</head>
+<body>
+<header><strong>Car Insurance</strong> &nbsp;&nbsp; @Html.ActionLink("Get a Quote", "Create", "Insuree") @Html.ActionLink("Admin (Demo)", "Admin", "Insuree")</header>
+<main>@RenderBody()</main>
+</body>
+</html>

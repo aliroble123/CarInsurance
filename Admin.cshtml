@@ -1,0 +1,13 @@
+@model IEnumerable<CarInsurance.Models.Insuree>
+@{ ViewBag.Title = "Admin - Quotes"; }
+<h1>Insurance Quotes — Admin</h1>
+<p>Coursework demonstration only. This page requires access control before real deployment.</p>
+<table>
+<thead><tr><th>First name</th><th>Last name</th><th>Email</th><th>Monthly quote</th></tr></thead>
+<tbody>
+@foreach (var item in Model)
+{
+    <tr><td>@item.FirstName</td><td>@item.LastName</td><td>@item.EmailAddress</td><td>@item.Quote.ToString("C")</td></tr>
+}
+</tbody>
+</table>

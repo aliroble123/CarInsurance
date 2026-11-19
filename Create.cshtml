@@ -1,0 +1,36 @@
+@model CarInsurance.Models.Insuree
+@{ ViewBag.Title = "Insurance Quote"; }
+<h1>Get an Insurance Quote</h1>
+<p>Enter your information below. The quote is calculated automatically.</p>
+@using (Html.BeginForm("Create", "Insuree", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <label>First name</label>
+    @Html.TextBoxFor(m => m.FirstName)
+    @Html.ValidationMessageFor(m => m.FirstName)
+    <label>Last name</label>
+    @Html.TextBoxFor(m => m.LastName)
+    @Html.ValidationMessageFor(m => m.LastName)
+    <label>Email address</label>
+    @Html.TextBoxFor(m => m.EmailAddress, new { type = "email" })
+    @Html.ValidationMessageFor(m => m.EmailAddress)
+    <label>Date of birth</label>
+    @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { type = "date" })
+    @Html.ValidationMessageFor(m => m.DateOfBirth)
+    <label>Car year</label>
+    @Html.TextBoxFor(m => m.CarYear, new { type = "number", min = "1886", max = "2100" })
+    @Html.ValidationMessageFor(m => m.CarYear)
+    <label>Car make</label>
+    @Html.TextBoxFor(m => m.CarMake)
+    @Html.ValidationMessageFor(m => m.CarMake)
+    <label>Car model</label>
+    @Html.TextBoxFor(m => m.CarModel)
+    @Html.ValidationMessageFor(m => m.CarModel)
+    <label>Number of speeding tickets</label>
+    @Html.TextBoxFor(m => m.SpeedingTickets, new { type = "number", min = "0", max = "100" })
+    @Html.ValidationMessageFor(m => m.SpeedingTickets)
+    <div class="check"><label>@Html.CheckBoxFor(m => m.DUI) Have you ever had a DUI?</label></div>
+    <div class="check"><label>@Html.CheckBoxFor(m => m.CoverageType) Full coverage?</label></div>
+    <button type="submit">Submit Insurance Quote</button>
+}
